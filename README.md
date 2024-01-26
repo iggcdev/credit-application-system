@@ -1,3 +1,5 @@
+Alpha
+
 # Credit Application System
 
 This repository contains a Credit Application System implemented using Kotlin, IntelliJ IDEA, H2 database, Spring Boot, Flyway, and Postman. The system is designed to manage credit applications, providing a robust and scalable solution for handling customer credit requests.
