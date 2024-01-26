@@ -10,7 +10,7 @@ This repository contains a Credit Application System implemented using Kotlin, I
 - **IntelliJ IDEA:** The integrated development environment used for Kotlin development.
 - **H2 Database:** A lightweight, in-memory database used to store and retrieve application data during development.
 - **Spring Boot:** A powerful framework for building Java-based applications, used for creating the backend of the credit application system.
-- **Flyway:** A database migration tool used for versioning and managing database schema changes.
+- **Flyway Migration:** A database migration tool used for versioning and managing database schema changes.
 - **Postman:** A popular API development and testing tool used for testing and documenting the application's APIs.
 
 ## Setup Instructions
