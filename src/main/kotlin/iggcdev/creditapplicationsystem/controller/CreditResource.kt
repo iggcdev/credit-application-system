@@ -6,6 +6,7 @@ import iggcdev.creditapplicationsystem.dto.CreditViewList
 import iggcdev.creditapplicationsystem.entity.Credit
 import iggcdev.creditapplicationsystem.service.impl.CreditService
 import jakarta.annotation.Resource
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
@@ -24,10 +25,10 @@ class CreditResource(
     private val creditService: CreditService
 ) {
     @PostMapping
-    fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String>{
+    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String>{
         val credit: Credit = this.creditService.save(creditDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!!!")
+            .body("Credit ${credit.creditCode} - Customer ${credit.customer?.email} saved!!!")
     }
     @GetMapping
     fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): ResponseEntity<List<CreditViewList>>{
