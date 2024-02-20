@@ -1,4 +1,4 @@
-package iggcdev.creditapplicationsystem.dto
+package iggcdev.creditapplicationsystem.dto.requests
 
 import iggcdev.creditapplicationsystem.entity.Address
 import iggcdev.creditapplicationsystem.entity.Customer

@@ -1,11 +1,10 @@
 package iggcdev.creditapplicationsystem.controller
 
-import iggcdev.creditapplicationsystem.dto.CreditDto
-import iggcdev.creditapplicationsystem.dto.CreditView
-import iggcdev.creditapplicationsystem.dto.CreditViewList
+import iggcdev.creditapplicationsystem.dto.requests.CreditDto
+import iggcdev.creditapplicationsystem.dto.responses.CreditView
+import iggcdev.creditapplicationsystem.dto.responses.CreditViewList
 import iggcdev.creditapplicationsystem.entity.Credit
 import iggcdev.creditapplicationsystem.service.impl.CreditService
-import jakarta.annotation.Resource
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

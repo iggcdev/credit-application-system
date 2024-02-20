@@ -1,4 +1,4 @@
-package iggcdev.creditapplicationsystem.dto
+package iggcdev.creditapplicationsystem.dto.responses
 
 import iggcdev.creditapplicationsystem.entity.Credit
 import java.math.BigDecimal
@@ -13,6 +13,6 @@ data class CreditViewList(
     constructor(credit: Credit): this(
         creditCode = credit.creditCode,
         creditValue = credit.creditValue,
-        numberOfInstallments = credit.numberOfInstallment
+        numberOfInstallments = credit.numberOfInstallments
     )
 }
