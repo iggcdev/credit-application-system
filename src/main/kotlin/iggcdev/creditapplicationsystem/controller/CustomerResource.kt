@@ -1,8 +1,8 @@
 package iggcdev.creditapplicationsystem.controller
 
-import iggcdev.creditapplicationsystem.dto.CustomerDto
-import iggcdev.creditapplicationsystem.dto.CustomerUpdateDto
-import iggcdev.creditapplicationsystem.dto.CustomerView
+import iggcdev.creditapplicationsystem.dto.requests.CustomerDto
+import iggcdev.creditapplicationsystem.dto.requests.CustomerUpdateDto
+import iggcdev.creditapplicationsystem.dto.responses.CustomerView
 import iggcdev.creditapplicationsystem.entity.Customer
 import iggcdev.creditapplicationsystem.service.impl.CustomerService
 import jakarta.validation.Valid
@@ -25,10 +25,10 @@ class CustomerResource(
     private val customerService: CustomerService
 ) {
     @PostMapping
-    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDto): ResponseEntity<String> {
-        val savedCustomer = this.customerService.save(customerDto.toEntity())
+    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDto): ResponseEntity<CustomerView> {
+        val savedCustomer: Customer = this.customerService.save(customerDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body("Customer ${savedCustomer.email} saved!")
+            .body(CustomerView(savedCustomer))
     }
 
     @GetMapping("/{id}")

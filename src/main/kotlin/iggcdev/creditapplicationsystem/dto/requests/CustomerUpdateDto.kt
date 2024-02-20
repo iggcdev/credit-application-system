@@ -1,4 +1,4 @@
-package iggcdev.creditapplicationsystem.dto
+package iggcdev.creditapplicationsystem.dto.requests
 
 import iggcdev.creditapplicationsystem.entity.Customer
 import jakarta.validation.constraints.NotEmpty
