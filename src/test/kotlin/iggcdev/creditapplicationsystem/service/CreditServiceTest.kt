@@ -62,14 +62,14 @@ class CreditServiceTest {
     @Test
     fun `should not create credit when invalid day first installment`() {
         //given
-        val invalidDayFirstInstallment: LocalDate = LocalDate.now().plusMonths(5)
+        val invalidDayFirstInstallment: LocalDate = LocalDate.now().plusMonths(4)
         val credit: Credit = buildCredit(dayFirstInstallment = invalidDayFirstInstallment)
 
         every { creditRepository.save(credit) } answers { credit }
         //when
         Assertions.assertThatThrownBy { creditService.save(credit) }
             .isInstanceOf(BusinessException::class.java)
-            .hasMessage("The date of the first installment must be 3 months from now.")
+            .hasMessage("The date of the first installment must be max 3 months from now.")
         //then
         verify(exactly = 0) { creditRepository.save(any()) }
     }

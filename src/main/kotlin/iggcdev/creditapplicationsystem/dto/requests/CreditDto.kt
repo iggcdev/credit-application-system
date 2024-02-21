@@ -27,8 +27,8 @@ data class CreditDto(
     init {
         val currentDate = LocalDate.now()
         val currentDatePlus3Months = currentDate.plusMonths(3)
-        require(dayFirstInstallment.isAfter(currentDatePlus3Months)) {
-            "Day of First Installment must be at least 3 months after the current date."
+        require(dayFirstInstallment.isBefore(currentDatePlus3Months)) {
+            "The date of the first installment must be 3 months from now."
         }
     }
     fun toEntity(): Credit = Credit(
