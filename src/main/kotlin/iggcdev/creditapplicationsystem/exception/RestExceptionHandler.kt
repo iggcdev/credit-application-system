@@ -23,8 +23,8 @@ class RestExceptionHandler {
         }
         return ResponseEntity(
             ExceptionDetails(
-                title = "Bad resquest! Consult the documentation",
-                timeStamp = LocalDateTime.now(),
+                title = "Bad Request! Consult the documentation",
+                timestamp = LocalDateTime.now(),
                 status = HttpStatus.BAD_REQUEST.value(),
                 exception = ex.javaClass.toString(),
                 details = erros
@@ -38,7 +38,7 @@ class RestExceptionHandler {
             .body(
                 ExceptionDetails(
                     title = "Conflict! Consult the documentation",
-                    timeStamp = LocalDateTime.now(),
+                    timestamp = LocalDateTime.now(),
                     status = HttpStatus.CONFLICT.value(),
                     exception = ex.javaClass.toString(),
                     details = mutableMapOf(ex.cause.toString() to ex.message)
@@ -51,7 +51,7 @@ class RestExceptionHandler {
             .body(
                 ExceptionDetails(
                     title = "Bad Request! Consult the documentation",
-                    timeStamp = LocalDateTime.now(),
+                    timestamp = LocalDateTime.now(),
                     status = HttpStatus.BAD_REQUEST.value(),
                     exception = ex.javaClass.toString(),
                     details = mutableMapOf(ex.cause.toString() to ex.message)
@@ -64,7 +64,7 @@ class RestExceptionHandler {
             .body(
                 ExceptionDetails(
                     title = "Bad Request! Consult the documentation",
-                    timeStamp = LocalDateTime.now(),
+                    timestamp = LocalDateTime.now(),
                     status = HttpStatus.BAD_REQUEST.value(),
                     exception = ex.javaClass.toString(),
                     details = mutableMapOf(ex.cause.toString() to ex.message)
