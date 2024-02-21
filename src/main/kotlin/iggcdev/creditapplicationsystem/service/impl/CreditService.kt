@@ -18,6 +18,7 @@ class CreditService(
 
     override fun save(credit: Credit): Credit {
         this.validDayFirstInstallment(credit.dayFirstInstallment)
+        this.validNumberOfInstallments(credit.numberOfInstallments)
         credit.apply {
             customer = customerService.findById(credit.customer?.id!!)
         }
@@ -33,7 +34,11 @@ class CreditService(
     }
     private fun validDayFirstInstallment(dayFirstInstalment: LocalDate): Boolean{
         val validDayFirstInstallment: LocalDate = LocalDate.now().plusMonths(3)
-        return if (dayFirstInstalment.isAfter(validDayFirstInstallment)) true
-        else throw BusinessException("The date of the first installment must be 3 months from now.")
+        return if (dayFirstInstalment.isBefore(validDayFirstInstallment)) true
+        else throw BusinessException("The date of the first installment must be max 3 months from now.")
+    }
+    private fun validNumberOfInstallments(numberOfInstallments: Int): Boolean{
+        return if (numberOfInstallments in 1..48) true
+        else throw BusinessException("Invalid number of installments")
     }
 }
