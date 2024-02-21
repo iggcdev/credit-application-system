@@ -1,5 +1,9 @@
 package iggcdev.creditapplicationsystem.service
 
+
 class CreditServiceTest {
-    //Criar implementação teste
+    //Implementar testes
+    //Metodo save
+    //Metodo findAllByCustomer
+    //Metodo findByCreditCode
 }
