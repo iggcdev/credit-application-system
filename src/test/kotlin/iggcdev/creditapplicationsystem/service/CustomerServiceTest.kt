@@ -23,11 +23,13 @@ import java.util.Random
 //@ActiveProfiles("test")
 @ExtendWith(MockKExtension::class)
 class CustomerServiceTest {
-    @MockK lateinit var customerRepository: CustomerRepository
-    @InjectMockKs lateinit var customerService: CustomerService
+    @MockK
+    lateinit var customerRepository: CustomerRepository
+    @InjectMockKs
+    lateinit var customerService: CustomerService
 
     @Test
-    fun `should create customer`(){
+    fun `should create customer`() {
         //given
         val fakeCustomer: Customer = buildCustomer()
         every { customerRepository.save(any()) } returns fakeCustomer
@@ -36,10 +38,11 @@ class CustomerServiceTest {
         //then
         Assertions.assertThat(actual).isNotNull
         Assertions.assertThat(actual).isSameAs(fakeCustomer)
-        verify(exactly = 1) { customerRepository.save(fakeCustomer)}
+        verify(exactly = 1) { customerRepository.save(fakeCustomer) }
     }
+
     @Test
-    fun `should find customer by id`(){
+    fun `should find customer by id`() {
         //given
         val fakeId: Long = Random().nextLong()
         val fakeCustomer: Customer = buildCustomer(id = fakeId)
@@ -54,7 +57,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    fun `should not find customer by invalid id throwing BusinessException`(){
+    fun `should not find customer by invalid id throwing BusinessException`() {
         //given
         val fakeId: Long = Random().nextLong()
         every { customerRepository.findById(fakeId) } returns Optional.empty()
@@ -65,8 +68,9 @@ class CustomerServiceTest {
             .withMessage("Id $fakeId not found.")
         verify(exactly = 1) { customerRepository.findById(fakeId) }
     }
+
     @Test
-    fun `should delete customer by id`(){
+    fun `should delete customer by id`() {
         //given
         val fakeId: Long = Random().nextLong()
         val fakeCustomer: Customer = buildCustomer(id = fakeId)
@@ -80,27 +84,30 @@ class CustomerServiceTest {
 
 
     }
-    private fun buildCustomer(
-        firstName: String = "Ivo",
-        lastName: String = "Gabriel",
-        cpf: String = "12345678900",
-        email: String = "ivogabriel@email.com",
-        password: String = "123456789",
-        zipCode: String = "123456789",
-        street: String = "Rua do Gabriel",
-        income: BigDecimal = BigDecimal.valueOf(1000.0),
-        id: Long = 1L
-    ) = Customer(
-        firstName = firstName,
-        lastName = lastName,
-        cpf = cpf,
-        email = email,
-        password = password,
-        address = Address(
-            zipCode = zipCode,
-            street = street
-        ),
-        income = income,
-        id = id
-    )
+
+    companion object {
+        public fun buildCustomer(
+            firstName: String = "Ivo",
+            lastName: String = "Gabriel",
+            cpf: String = "12345678900",
+            email: String = "ivogabriel@email.com",
+            password: String = "123456789",
+            zipCode: String = "123456789",
+            street: String = "Rua do Gabriel",
+            income: BigDecimal = BigDecimal.valueOf(1000.0),
+            id: Long = 1L
+        ) = Customer(
+            firstName = firstName,
+            lastName = lastName,
+            cpf = cpf,
+            email = email,
+            password = password,
+            address = Address(
+                zipCode = zipCode,
+                street = street
+            ),
+            income = income,
+            id = id
+        )
+    }
 }
