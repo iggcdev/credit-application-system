@@ -57,6 +57,13 @@ class CreditServiceTest {
 
         Assertions.assertThat(actual).isNotNull
         Assertions.assertThat(actual).isSameAs(credit)
+        Assertions.assertThat(actual.id).isEqualTo(credit.id)
+        Assertions.assertThat(actual.creditValue).isEqualTo(credit.creditValue)
+        Assertions.assertThat(actual.creditCode).isEqualTo(credit.creditCode)
+        Assertions.assertThat(actual.dayFirstInstallment).isEqualTo(credit.dayFirstInstallment)
+        Assertions.assertThat(actual.customer).isEqualTo(credit.customer)
+        Assertions.assertThat(actual.status).isEqualTo(credit.status)
+        Assertions.assertThat(actual.numberOfInstallments).isEqualTo(credit.numberOfInstallments)
     }
 
     @Test
